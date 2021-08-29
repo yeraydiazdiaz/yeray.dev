@@ -198,6 +198,10 @@
     margin-bottom: 10px;
     @include relative-font-size(0.85);
   }
+
+  .footnotes {
+    display: none;
+  }
 }
 
 .post-meta {
