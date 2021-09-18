@@ -93,7 +93,7 @@ It took me a while to fully understand the power of pattern matching and how you
 
 Elixir has a strong meta-programming story and macros are very common both in its standard library external ones, many of which introduce operators or constructs. This can be confusing for someone coming from Python, where you just know what's part of the language and what isn't.
 
-Elixir takes inspiration from Ruby and the [Phoenix framework](https://phoenixframework.org/) is heavily influenced by Ruby on Rails, where it's common to prefer "convention over configuration". For example, you have to adhere to naming conventions to get things to work. This was one of my pet peeves when working on Ruby on Rails and is simply not common in the Python ecosystem where explictness is an axiom of the language.
+Elixir takes inspiration from Ruby and the [Phoenix framework](https://phoenixframework.org/) is heavily influenced by Ruby on Rails, where it's common to prefer "convention over configuration". For example, you have to adhere to naming conventions to get things to work. This was one of my pet peeves when working on Ruby on Rails and is simply not common in the Python ecosystem where explicitness is an axiom of the language.
 
 Elixir is an expression based language, there are no explicit returns, the result of a function or block is the value of the last expression. For example, `if` constructs used to trip me up constantly:
 
@@ -181,7 +181,7 @@ def first_name(%User{} = user) do
 end
 ```
 
-This allows you to express complex pipelines clearly and succintly so the reader can understand each operation separately and compose the result. For smaller tasks it's not that big a deal but when there are 4 or more steps you start appreciating how clearly the data flow is described.
+This allows you to express complex pipelines clearly and succinctly so the reader can understand each operation separately and compose the result. For smaller tasks it's not that big a deal but when there are 4 or more steps you start appreciating how clearly the data flow is described.
 
 ## Miss: Ecosystem
 
@@ -201,11 +201,11 @@ Some other lovely tools in Elixir are the [interactive shell](https://hexdocs.pm
 
 ## Miss: Simple releases
 
-In Python shipping to production is fairly straghtforward: you make sure your target platform is running the version Python you want, you install the dependencies, copy the code, and run it. You may add a virtual environment or wrap everything in a Docker container but that's basically it.
+In Python shipping to production is fairly straightforward: you make sure your target platform is running the version Python you want, you install the dependencies, copy the code, and run it. You may add a virtual environment or wrap everything in a Docker container but that's basically it.
 
-In Elixir things get complicated. You _can_ use Docker, but if you can't or don't want to[^2], you need to make a "release". Which is basically a tarball of the Erlang VM along with your compiled code that can be ran "anywhere".
+In Elixir things get complicated. You _can_ use Docker, but if you can't or don't want to[^2], you need to make a "release". Which is basically a tarball of the Erlang VM along with your compiled code that can be executed.
 
-This sounds simple, but it's actually quite hard to set up correctly, because it turns out you cannot build a release for, say, Ubuntu, on a Mac, you need an Ubuntu VM or Docker to build the release. This means you need to write a fairly complex Dockerfile that is not meant for running the code but to create the release and write it out to disk. Finally, you need to copy this to the target machine and run it there.
+This sounds simple enough, but it's actually quite hard to set up correctly, because it turns out you cannot build a release for, say, Ubuntu, on a Mac, you need an Ubuntu VM or Docker to build the release. This means you need to write a fairly complex Dockerfile that is not meant for running the code but to create the release and write it out to disk. Finally, you need to copy this to the target machine and run it there.
 
 That being said, there are services like [Heroku](https://elixir-lang.org/blog/2020/09/24/paas-with-elixir-at-Heroku/) or [Gigalixir](https://www.gigalixir.com/) that will make this process much easier, but there's quite a contrast with Python when you want a DIY approach.
 
