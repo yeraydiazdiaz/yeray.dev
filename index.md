@@ -21,9 +21,9 @@ I'm a moderator on [PyPI.org](https://pypi.org) and organizer of the [London Pyt
 
 Here's a quick summary of my personal projects, you can find more on my [GitHub profile][github]:
 
-- [shoutouts.dev](https://shoutouts.dev), a website for users of Open Source projects to leave messages of gratitude, currently in beta.
 - [Lunr.py](https://readthedocs.org/projects/lunr/), a Python implementation of [Lunr.js](https://lunrjs.com/), aiming to bring the simple and powerful full text search capabilities of Lunr.js into Python.
 - [Futureproof](https://github.com/yeraydiazdiaz/futureproof), a thin wrapper over concurrent.futures aiming to solve common pitfalls and usability problems.
+- [Sublime REST Client](https://github.com/yeraydiazdiaz/sublime-rest-client), an HTTP client plugin for Sublime Text 4.
 - [wait_for_it.py](https://github.com/yeraydiazdiaz/wait_for_it.py), a simple no-dependencies pure Python implementation of the infamous [wait-for-it.sh](https://github.com/vishnubob/wait-for-it).
 
 ## Contact
