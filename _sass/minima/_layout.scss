@@ -108,6 +108,61 @@
 
 
 /**
+ * Dark mode toggle
+ */
+.theme-toggle {
+  float: right;
+  line-height: $base-line-height * $base-font-size * 2.25;
+  margin-right: $spacing-unit / 2;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: $text-color;
+  font-family: $hero-font-family;
+
+  &:hover {
+    color: $brand-color;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+
+  .icon-sun {
+    display: none;
+  }
+
+  .icon-moon {
+    display: inline;
+  }
+
+  @include media-query($on-palm) {
+    position: absolute;
+    top: 15px;
+    right: $spacing-unit / 2 + 50px;
+    line-height: 36px;
+    margin-right: 0;
+  }
+}
+
+// Explicit dark theme
+html[data-theme="dark"] .theme-toggle {
+  .icon-sun { display: inline; }
+  .icon-moon { display: none; }
+}
+
+// Following the system dark preference
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .theme-toggle {
+    .icon-sun { display: inline; }
+    .icon-moon { display: none; }
+  }
+}
+
+
+
+/**
  * Site footer
  */
 .site-footer {
@@ -323,11 +378,11 @@
     text-decoration: underline;
 
     &:visited {
-      color: darken($brand-color, 15%);
+      color: $brand-color-visited;
     }
 
     &:hover {
-      color: darken($brand-color, 33%);
+      color: $brand-color-hover;
       text-decoration: underline;
     }
   }
