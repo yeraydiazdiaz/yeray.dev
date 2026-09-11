@@ -5,7 +5,7 @@
   @include relative-font-size(0.9375);
   margin: 1em 0;
   border-radius: 3px;
-  background-color: #f8f8f8;
+  background-color: $code-bg-color;
   @extend %vertical-rhythm;
 
   // .highlighter-rouge & {
@@ -80,4 +80,48 @@
   .vg    { color: #008080 } // Name.Variable.Global
   .vi    { color: #008080 } // Name.Variable.Instance
   .il    { color: #099 } // Literal.Number.Integer.Long
+}
+
+/**
+ * Dark syntax colours (Classic Midnight). Same selectors as above, so the
+ * later declaration wins inside the dark theme only.
+ */
+@mixin syntax-dark {
+  .highlight {
+    .c, .cm, .c1 { color: #7f8794; font-style: italic } // Comment
+    .cs          { color: #7f8794; font-weight: bold; font-style: italic } // Comment.Special
+    .cp          { color: #9aa3ae; font-weight: bold } // Comment.Preproc
+    .err         { color: #f0a5a5; background-color: #3a2326 } // Error
+    .gd          { color: #f0a5a5; background-color: #3a2326 } // Generic.Deleted
+    .gd .x       { background-color: #4a2a2e } // Generic.Deleted.Specific
+    .gr          { color: #f0a5a5 } // Generic.Error
+    .gh          { color: #b6bec9 } // Generic.Heading
+    .gi          { color: #a8d0a8; background-color: #24352a } // Generic.Inserted
+    .gi .x       { background-color: #2c4234 } // Generic.Inserted.Specific
+    .go          { color: #8f96a0 } // Generic.Output
+    .gp          { color: #9aa3ae } // Generic.Prompt
+    .gu          { color: #b6bec9 } // Generic.Subheading
+    .gt          { color: #f0a5a5 } // Generic.Traceback
+    .kc, .kd, .kp, .kr, .ow { color: #c586c0; font-weight: bold } // Keywords, Operator.Word
+    .kt, .nc     { color: #86b8d8; font-weight: bold } // Keyword.Type, Name.Class
+    .m, .mf, .mh, .mi, .mo, .il { color: #b5cea8 } // Numbers
+    .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1 { color: #ce9178 } // Strings
+    .sr          { color: #d16884 } // Literal.String.Regex
+    .ss          { color: #c586c0 } // Literal.String.Symbol
+    .na, .nb, .no, .ni, .nv, .vc, .vg, .vi, .bp { color: #6fb3d2 } // Names
+    .nf, .ne     { color: #dcdcaa; font-weight: bold } // Function, Exception
+    .nn          { color: #9aa3ae } // Name.Namespace
+    .nt          { color: #86b8d8 } // Name.Tag
+    .w           { color: #565b64 } // Text.Whitespace
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include syntax-dark;
+  }
+}
+
+html[data-theme="dark"] {
+  @include syntax-dark;
 }
