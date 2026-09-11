@@ -1,0 +1,119 @@
+// Shared variables and mixins for the minima theme. Partials load this
+// module explicitly (Sass modules do not share scope implicitly).
+
+@use "sass:color";
+
+// Light palette. Kept as real colours at compile time so Sass colour
+// functions can derive the greys and link states below.
+$text-color:       #111 !default;
+$background-color: #fdfdfd !default;
+$brand-color:      #5386b3 !default;
+$warning-color:    #f8f8d4 !default;
+$note-color:       #e0eefa !default;
+
+$grey-color:       #828282 !default;
+$grey-color-light: color.adjust($grey-color, $lightness: 40%) !default;
+$grey-color-dark:  color.adjust($grey-color, $lightness: -25%) !default;
+
+$brand-color-hover:   color.adjust($brand-color, $lightness: -33%) !default;
+$brand-color-visited: color.adjust($brand-color, $lightness: -15%) !default;
+
+$quote-bg-color:   #f2f2f2 !default;
+$code-bg-color:    #f8f8f8 !default;
+
+// Width of the content area
+$content-width:    800px !default;
+$content-width-desktop: 1280px !default;
+
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
+$on-desktop:       1024px !default;
+$on-widescreen:    1280px !default;
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//   .wrapper {
+//     padding-right: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+//   }
+// }
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+@mixin relative-font-size($ratio) {
+  font-size: $base-font-size * $ratio;
+}
+
+$base-font-family: "Zilla Slab", Palatino, serif !default;
+$hero-font-family: "Raleway", Helvetica, sans-serif !default;
+$base-font-size:   20px !default;
+$base-font-weight: 300 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+
+$spacing-unit:     30px !default;
+
+// Publish the palette as CSS custom properties. Everything downstream uses
+// these via the SCSS variable aliases below, so switching themes is just a
+// matter of overriding the custom properties.
+:root {
+  --c-text: #{$text-color};
+  --c-bg: #{$background-color};
+  --c-brand: #{$brand-color};
+  --c-brand-hover: #{$brand-color-hover};
+  --c-brand-visited: #{$brand-color-visited};
+  --c-warning: #{$warning-color};
+  --c-note: #{$note-color};
+  --c-grey: #{$grey-color};
+  --c-grey-light: #{$grey-color-light};
+  --c-grey-dark: #{$grey-color-dark};
+  --c-quote-bg: #{$quote-bg-color};
+  --c-code-bg: #{$code-bg-color};
+  color-scheme: light;
+}
+
+// Dark palette: "Classic Midnight" (neutral dark grey-blue).
+@mixin dark-palette {
+  --c-text: #e2e2e2;
+  --c-bg: #17181c;
+  --c-brand: #7fa8d0;
+  --c-brand-hover: #aecbf0;
+  --c-brand-visited: #96b4d6;
+  --c-warning: #403f2c;
+  --c-note: #1d2430;
+  --c-grey: #7d8590;
+  --c-grey-light: #343a46;
+  --c-grey-dark: #c6cbd4;
+  --c-quote-bg: #22242a;
+  --c-code-bg: #1e2026;
+  color-scheme: dark;
+}
+
+// Follow the system preference unless the user picked a theme explicitly.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-palette;
+  }
+}
+
+html[data-theme="dark"] {
+  @include dark-palette;
+}
+
+// Rebind the SCSS variables to the custom properties so every partial picks
+// up theme switching without further changes.
+$text-color:       var(--c-text);
+$background-color: var(--c-bg);
+$brand-color:      var(--c-brand);
+$brand-color-hover:   var(--c-brand-hover);
+$brand-color-visited: var(--c-brand-visited);
+$warning-color:    var(--c-warning);
+$note-color:       var(--c-note);
+$quote-bg-color:   var(--c-quote-bg);
+$code-bg-color:    var(--c-code-bg);
+$grey-color:       var(--c-grey);
+$grey-color-light: var(--c-grey-light);
+$grey-color-dark:  var(--c-grey-dark);
