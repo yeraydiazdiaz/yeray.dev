@@ -15,7 +15,7 @@ I'm a software engineer from Spain. I help companies develop maintainable and sc
 
 I code primarily in Python and Typescript and have experience in Elixir, Ruby, Objective-C, and C#, but most of all I love clean testable code.
 
-Occasionally I write about code, usually articles that help people get started on certain technologies or practices that I've struggled with or am passionate about. Have look at the [blog](/blog) or [Medium](https://medium.com/@yeraydiazdiaz/) if you're interested.
+Occasionally I [write about code](/blog), usually articles that help people get started on certain technologies or practices that I've struggled with or am passionate about.
 
 ## Projects
 
